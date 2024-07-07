@@ -1,0 +1,19 @@
+PRE CONDITION 		ACTION 			ASSERTION
+
+1. I have an ac		i turn it on 		it is on
+it is turned off
+
+2. I have an ac		when i turn		it is off  
+my ac is on 		it off
+
+3. my ac is on		when i increase	the	the temp. increases.
+			temperature
+
+4. My ac is on		when i decrease the	the temp. decreaes. 
+			temerarture 
+
+5. My ac is on		when i increase it by	temperarture still 30
+at 20			30			
+
+6. My ac is on		when i decrease below	temperature still 16 
+at 16			16
