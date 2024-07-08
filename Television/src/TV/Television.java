@@ -26,7 +26,7 @@ public class Television {
     }
 
     public void increasetVolume() {
-        boolean inValidVolume = volume < 0 || volume > 100;
+        boolean inValidVolume = volume > 2;
         if(isOn) {
             if (inValidVolume) throw new IllegalStateException("Volume must be between 0 and 100");
             if(!inValidVolume) volume++;
@@ -35,25 +35,33 @@ public class Television {
     }
 
     public void decreaseVolume() {
-        boolean inValidVolume = volume < 0 || volume > 100;
+        boolean inValidVolume = volume < 0 ;
         if(isOn){
             if(inValidVolume) throw new IllegalStateException("Volume must be between 0 and 100");
             if(!inValidVolume) volume--;
         }
-        if (!isOn) throw new IllegalArgumentException("Tv is off");
+        if (!isOn) throw new IllegalStateException("Tv is off");
     }
 
     public int getVolume() {
-      //  if(!isOn) throw new IllegalStateException("Tv is off");
+        if(!isOn) throw new IllegalStateException("Tv is off");
         return volume;
     }
 
-    public void Mute(boolean mute) {
-        isMute = true;
+    public void mute() {
+        if(isOn){
+            isMute = true;
+        }
+        else throw new IllegalStateException("Tv is off");
     }
 
-    public void unMute(boolean mute) {
-        isMute = false;
+    public void unMute() {
+        if(isOn) {
+            isMute = false;
+        }
+        else {
+            throw new IllegalStateException("Tv is off");
+        }
     }
 
     public boolean muteState() {
@@ -61,11 +69,15 @@ public class Television {
     }
 
     public void changeChanel(int chanel) {
-        chanel ++;
+        if(isOn) {
+            this.chanel += chanel;
+        }
+        else throw new IllegalStateException("Tv is off");
     }
 
-    public void previousChannel(int chanel) {
-        chanel --;
+    public int getChannel() {
+        if(!isOn) throw new IllegalStateException("Tv is off");
+        return chanel;
     }
 
 
