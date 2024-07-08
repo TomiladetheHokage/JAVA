@@ -25,18 +25,26 @@ public class Television {
         return isOn;
     }
 
-    public void setVolume(int volume) {
-        if (volume < 0 || volume > 100) throw new IllegalArgumentException("Volume must be between 0 and 100");
-        volume++;
-
+    public void increasetVolume() {
+        boolean inValidVolume = volume < 0 || volume > 100;
+        if(isOn) {
+            if (inValidVolume) throw new IllegalStateException("Volume must be between 0 and 100");
+            if(!inValidVolume) volume++;
+        }
+        else throw new IllegalStateException("Tv is off");
     }
 
-    public void decreaseVolume(int volume) {
-        if (volume < 0 || volume > 100) throw new IllegalArgumentException("Volume must be between 0 and 100");
-        volume--;
+    public void decreaseVolume() {
+        boolean inValidVolume = volume < 0 || volume > 100;
+        if(isOn){
+            if(inValidVolume) throw new IllegalStateException("Volume must be between 0 and 100");
+            if(!inValidVolume) volume--;
+        }
+        if (!isOn) throw new IllegalArgumentException("Tv is off");
     }
 
     public int getVolume() {
+      //  if(!isOn) throw new IllegalStateException("Tv is off");
         return volume;
     }
 
