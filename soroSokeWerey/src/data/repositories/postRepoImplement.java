@@ -7,7 +7,7 @@ import java.util.List;
 
 public class postRepoImplement implements PostRepo{
 
-    private static List<Post> posts = new ArrayList<Post>();
+    private  List<Post> posts = new ArrayList<>();
     int idCount = 0;
 
 
@@ -22,8 +22,7 @@ public class postRepoImplement implements PostRepo{
     }
 
     private int generateId(){
-        idCount++;
-        return idCount;
+        return ++idCount;
     }
 
     @Override
@@ -52,7 +51,6 @@ public class postRepoImplement implements PostRepo{
         for(Post post : posts) {
             if(post.getId() == id) {
                 posts.remove(post);
-                break;
             }
         }
     }
